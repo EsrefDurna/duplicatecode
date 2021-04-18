@@ -1,0 +1,28 @@
+{
+	"extends": [
+		"node"
+	],
+	"rules": {
+		"arrow-body-style": "off",
+		"no-param-reassign": "off",
+		"no-tabs": "off",
+		"indent": [
+			"warn",
+			"tab"
+		],
+		"max-len": "off",
+		"no-multiple-empty-lines": [
+			"warn",
+			{
+				"max": 0,
+				"maxEOF": 0
+			}
+		],
+		"prefer-destructuring": "off",
+		"max-classes-per-file": "off",
+		"semi": [
+			"error",
+			"always"
+		]
+	}
+}
