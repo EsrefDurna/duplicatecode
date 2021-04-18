@@ -1,4 +1,4 @@
 # duplicatecode
 # duplicatecode
 
-this is a cli tool, 
+this is a cli tool.
