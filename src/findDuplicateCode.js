@@ -22,7 +22,7 @@ function duplicateLength({ map,duplicate,mapLines,result, cache}) {
 			memArr.sort((a,b)=> {
 				if (a.file === b.file) {
 					if (a.index === b.index) {
-						console.error('shouldnt be happening');
+						//console.error('shouldnt be happening');
 						return 0;
 					}
 					return a.index-b.index;
@@ -71,14 +71,15 @@ function duplicateLength({ map,duplicate,mapLines,result, cache}) {
 		cache.set(CurrentMemKey, curResult);
 		result.push(curResult);
 	} catch (err) {
-		console.error(`countDup:${err}`);
+		console.error(`duplicateLength:${err.message}`);
 	}
 }
 function findDuplicateCode({folder, extensions='js',
 	startsWith= '', 
 	MAX_SCAN_SIZE= 10000, TOP_RESULTS= 100}) {
 	const cache = new Map();
-	const res = findFiles({base: process.cwd(), folderName: folder, extensionsStr:extensions});
+	const base = process.cwd();
+	const res = findFiles({base, folderName: folder, extensionsStr:extensions});
 	const map = new Map();
 	const mapLines = new Map();
 	const duplicates = [];
@@ -110,7 +111,7 @@ function findDuplicateCode({folder, extensions='js',
 			console.log(lines[t]);
 		}
 	}
-	console.log('done');
+	console.log('Finished.');
 }
 module.exports = {
 	findDuplicateCode

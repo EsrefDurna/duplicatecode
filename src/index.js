@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const program = require('commander');
-const inquirer = require('inquirer');
+//const inquirer = require('inquirer');
 const chalk = require('chalk');
 const figlet = require('figlet');
-const { findDuplicateCode }= require('./findDuplicateCode');
+const { findDuplicateCode } = require('./findDuplicateCode');
 function showWelcome() {
 	console.log(
 	  chalk.green(

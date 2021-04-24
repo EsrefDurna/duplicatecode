@@ -1,6 +1,6 @@
 {
   "name": "duplicatecode",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,6 @@
     "commander": "^2.19.0",
     "dotenv": "^6.2.0",
     "figlet": "^1.2.1",
-    "inquirer": "^6.2.2",
     "replaceall": "^0.1.6",
     "sha256": "^0.2.0"
   },

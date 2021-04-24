@@ -13,7 +13,7 @@
             ],
             "args": [
                 "-f",
-                "./src"
+                "./node_modules"
             ],
             "program": "${workspaceFolder}/index.js"
         }
