@@ -23,7 +23,7 @@ async function run() {
 			.option('-m, --maxscan <integer>', 'maximum number of files to scan', 10000)
 			.option('-o, --maxoutput <integer>', 'maximum number of duplicates to display', 100)
 			.option('-e, --ext js,ts  <string>', 'file types to scan', 'js')
-			.option('-s, --startsWith  <string>', 'result should have starts with in their first line', 'function');
+			.option('-c, --contains  <string>', 'First line of the result should contain this word', 'function');
 	  program.parse();
 	  showWelcome();
 	  const options = program.opts();
@@ -34,7 +34,7 @@ async function run() {
 				extensions: options.ext,
 				MAX_SCAN_SIZE: options.maxscan,
 				TOP_RESULTS: options.maxoutput,
-				startsWith: options.startsWith});
+				containsWord: options.contains});
 	  } 
 	} catch (err) {
 	  console.error(err.message);

@@ -75,7 +75,7 @@ function duplicateLength({ map,duplicate,mapLines,result, cache}) {
 	}
 }
 function findDuplicateCode({folder, extensions='js',
-	startsWith= '', 
+	containsWord= '', 
 	MAX_SCAN_SIZE= 10000, TOP_RESULTS= 100}) {
 	const cache = new Map();
 	const base = process.cwd();
@@ -105,7 +105,7 @@ function findDuplicateCode({folder, extensions='js',
 		const start = curResult.index;
 		let end = curResult.index+curResult.cnt+1;
 		const firstLine = lines[start];
-		if (startsWith && startsWith.length > 0 && firstLine.indexOf(startsWith) < 0) {
+		if (containsWord && containsWord.length > 0 && firstLine.indexOf(containsWord) < 0) {
 			continue;
 		}
 		console.log('--------------------------------');
