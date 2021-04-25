@@ -88,11 +88,13 @@ function findDuplicateCode({folder, extensions='js',
 	}
 	const result = [];
 	console.log(`found ${duplicates.length} duplicates.`);
+	let lastpercent = -1;
 	for (let i=0;i<duplicates.length;i++) {
 		const duplicate = duplicates[i];
 		const percent = (100*i/duplicates.length).toFixed(0);
-		if (percent > 0 && percent % 5=== 0) {
+		if (lastpercent !== percent && percent > 0 && percent % 5 === 0) {
 			console.log(`Scanned: ${percent}%`);
+			lastpercent = percent;
 		}
 		duplicateLength({map,duplicate,mapLines,result,cache});
 	}
