@@ -15,8 +15,10 @@ function replaceDoubleChars({line,chr}) {
 	return validChrResult;
 }
 function zipLines({line}) {
-	line = replaceDoubleChars({line,chr:' '});
-	line = replaceDoubleChars({line,chr:'\t'});
+	if (line) {
+		line = replaceDoubleChars({line,chr:' '});
+		line = replaceDoubleChars({line,chr:'\t'});
+	}
 	return line;
 }
 module.exports = {

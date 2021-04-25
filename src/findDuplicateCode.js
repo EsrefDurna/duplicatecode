@@ -87,12 +87,18 @@ function findDuplicateCode({folder, extensions='js',
 		LineMap({fileName:res[i],map,duplicates,mapLines});
 	}
 	const result = [];
+	console.log(`found ${duplicates.length} duplicates.`);
 	for (let i=0;i<duplicates.length;i++) {
 		const duplicate = duplicates[i];
+		const percent = (100*i/duplicates.length).toFixed(0);
+		if (percent > 0 && percent % 5=== 0) {
+			console.log(`Scanned: ${percent}%`);
+		}
 		duplicateLength({map,duplicate,mapLines,result,cache});
 	}
 	let printed = 0;
-	const sorted = result.filter(d=>d.cnt > 4).sort((a,b)=>b.cnt - a.cnt);
+	console.log(`longest top: ${TOP_RESULTS} duplicated.`);
+	const sorted = result.filter(d=>d.cnt > 3).sort((a,b)=>b.cnt - a.cnt);
 	for (let i=0;printed < TOP_RESULTS&& i<sorted.length;i++) {
 		const curResult = sorted[i];
 		const lines = readFileLines({fileName: curResult.file});
@@ -102,10 +108,11 @@ function findDuplicateCode({folder, extensions='js',
 		if (startsWith && startsWith.length > 0 && firstLine.indexOf(startsWith) < 0) {
 			continue;
 		}
+		console.log('--------------------------------');
 		printed++;
 		for (let t=start;t<lines.length && t<= end;t++) {
 			const line = zipLines({line:lines[i]});
-			if (line.length === 0) {
+			if (!line || line.length === 0) {
 				end++;
 			}
 			console.log(lines[t]);

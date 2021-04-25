@@ -6,10 +6,12 @@ function findFiles({
 	try {
 		const extensions = extensionsStr.split(',');
 		const fullFolderPath = path.join(base,folderName);
-		const files =  fs.readdirSync(fullFolderPath);
-		console.log(fullFolderPath);
 		if (fs.existsSync(fullFolderPath) === false) {
 			console.error(`folder not found: ${fullFolderPath}`);
+		}
+		const files =  fs.readdirSync(fullFolderPath);
+		if (!files) {
+			console.log(`files is undefined`);
 		}
 		for (let i=0;i<files.length;i++) {
 			try {
